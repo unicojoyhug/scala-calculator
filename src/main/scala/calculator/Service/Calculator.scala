@@ -10,7 +10,7 @@ object Calculator{
 
   def getResult(input:String):String ={
     //parse input with left / operator / right
-    val format = new DecimalFormat("0.#")
+    val format = new DecimalFormat("0.#########")
 
     val operator = input.replaceAll("\\s", "")
 

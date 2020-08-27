@@ -95,6 +95,7 @@ object CalculatorGUI {
     //set actions
     clearDisplay.onAction  = (e: ActionEvent) => {
       text.text = ""
+      floatPoint.setDisable(false)
     }
 
     button0.onAction  = (e: ActionEvent) => {
