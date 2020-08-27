@@ -10,8 +10,6 @@ object Calculator{
 
   def getResult(input:String):String ={
     //parse input with left / operator / right
-    logger.debug(input.split('+')(0))
-
     val format = new DecimalFormat("0.#")
 
     val operator = input.replaceAll("\\s", "")

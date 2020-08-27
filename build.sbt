@@ -10,6 +10,7 @@ libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.0.9"
 
 
 // Add OS specific JavaFX dependencies
+
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux") => "linux"
@@ -22,8 +23,21 @@ libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "1
 enablePlugins(JavaAppPackaging)
 enablePlugins(DockerPlugin)
 
-dockerBaseImage := "openjdk:11.0.6-slim"
+dockerBaseImage := "openjdk:11"
 mainClass in Compile := Some("calculator.Main")
+
+//https://blog.elegantmonkeys.com/dockerizing-your-scala-application-6590385fd501
+
+test in assembly := {}
+// Simple and constant jar name
+assemblyJarName in assembly := s"app-assembly.jar"
+// Merge strategy for assembling conflicts
+assemblyMergeStrategy in assembly := {
+  case PathList("reference.conf") => MergeStrategy.concat
+  case PathList("META-INF", "MANIFEST.MF") => MergeStrategy.discard
+  case _ => MergeStrategy.first
+}
+
 
 // Fork a new JVM for 'run' and 'test:run', to avoid JavaFX double initialization problems
 fork := true
