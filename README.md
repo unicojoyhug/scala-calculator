@@ -9,11 +9,10 @@
 
 * Requirement
     * Use SBT, the most widespread build tool in Scala
-    * Unless you have experience with another tool for Scala
     * Create an executable delivery in a suitable format:
-    * Mac or Linux executable
-    * Single main method (runnable via sbt run)
-    * Docker image with descriptions on how to run
+        * Mac or Linux executable
+        * Single main method (runnable via sbt run)
+        * Docker image with descriptions on how to run (Not implemented yet)
   
 ## Setup of application
 * requirement: in order to use the current scalafx, we need **java 11**.
