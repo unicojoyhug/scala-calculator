@@ -16,11 +16,20 @@
     * Docker image with descriptions on how to run
   
 ## Setup of application
-* requirement: in order to use the current scalafx, we need java 11.
+* requirement: in order to use the current scalafx, we need **java 11**.
     * open in intellij : import it as sbt project with java 11 to run it.
     * running the application locally:  ```sbt run```
-    * assemble jar and run it : ```./docker/assembly_run.sh```
-    * running with jar: ```./docker/run_jar.sh ```
+    * move to docker folder and assemble or run jar
+        * assemble jar and run it : 
+        ```
+         cd docker
+          ./assembly_run.sh
+        ```
+        * running with jar: 
+        ```
+         cd docker
+        ./run_jar.sh 
+        ```
 
 
 
