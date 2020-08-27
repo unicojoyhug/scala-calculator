@@ -142,25 +142,27 @@ object CalculatorGUI {
 
     divide.onAction  = (e: ActionEvent) => {
       text.text = checkOperation(text) + "/"
+      floatPoint.setDisable(false)
     }
 
     multiply.onAction  = (e: ActionEvent) => {
       text.text = checkOperation(text)  + "x"
+      floatPoint.setDisable(false)
     }
 
     plus.onAction  = (e: ActionEvent) => {
       text.text = checkOperation(text) + "+"
+      floatPoint.setDisable(false)
     }
 
     minus.onAction  = (e: ActionEvent) => {
       text.text = checkOperation(text) + "-"
+      floatPoint.setDisable(false)
     }
 
     floatPoint.onAction  = (e: ActionEvent) => {
-      if(text.text.value.matches("^-?\\d+\\.?\\d+[-+*\\/]-?\\d+\\.?\\d+$")){
-        e.consume()
-      } else  text.text = text.text.value + "."
-
+      floatPoint.setDisable(true)
+      text.text = text.text.value + "."
     }
 
     calculate.onAction  = (e: ActionEvent) => {
@@ -168,6 +170,7 @@ object CalculatorGUI {
       if(text.text.value.length == 0 ){
         e.consume()
       } else text.text  = checkOperation(text)
+      floatPoint.setDisable(false)
     }
 
     //Add pane for buttons
