@@ -37,11 +37,12 @@ object Calculator{
   def multiply (inputArray: Array[Double]):Double = inputArray(0) * inputArray(1)
 
   def divide (inputArray: Array[Double]):Double = {
-    if(inputArray(1) == 0)
+    if(inputArray(1) == 0) {
       throw new ArithmeticException("Division by zero is undefined.")
-    else {
+    } else {
       BigDecimal(inputArray(0) / inputArray(1)).setScale(9, BigDecimal.RoundingMode.HALF_UP).toDouble
     }
+
   }
 }
 
