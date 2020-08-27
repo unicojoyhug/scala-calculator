@@ -102,63 +102,89 @@ object CalculatorGUI {
       if(text.text.value.length == 1 && text.text.value == "0"){
         e.consume()
       } else text.text = text.text.value + "0"
+
+      calculate.setDisable(false)
     }
 
     button1.onAction  = (e: ActionEvent) => {
       text.text = text.text.value + "1"
+      calculate.setDisable(false)
+
     }
 
     button2.onAction  = (e: ActionEvent) => {
       text.text = text.text.value + "2"
+      calculate.setDisable(false)
+
     }
 
     button3.onAction  = (e: ActionEvent) => {
       text.text = text.text.value + "3"
+      calculate.setDisable(false)
+
     }
 
     button4.onAction  = (e: ActionEvent) => {
       text.text = text.text.value + "4"
+      calculate.setDisable(false)
+
     }
 
     button5.onAction  = (e: ActionEvent) => {
       text.text = text.text.value + "5"
+      calculate.setDisable(false)
+
     }
 
     button6.onAction  = (e: ActionEvent) => {
       text.text = text.text.value + "6"
+      calculate.setDisable(false)
+
     }
 
     button7.onAction  = (e: ActionEvent) => {
       text.text = text.text.value + "7"
+      calculate.setDisable(false)
+
     }
 
 
     button8.onAction  = (e: ActionEvent) => {
       text.text = text.text.value + "8"
+      calculate.setDisable(false)
+
     }
 
     button9.onAction  = (e: ActionEvent) => {
       text.text = text.text.value + "9"
+      calculate.setDisable(false)
+
     }
 
     divide.onAction  = (e: ActionEvent) => {
       text.text = checkOperation(text) + "/"
       floatPoint.setDisable(false)
+      calculate.setDisable(true)
     }
 
     multiply.onAction  = (e: ActionEvent) => {
       text.text = checkOperation(text)  + "x"
       floatPoint.setDisable(false)
+      calculate.setDisable(true)
+
     }
 
     plus.onAction  = (e: ActionEvent) => {
       text.text = checkOperation(text) + "+"
       floatPoint.setDisable(false)
+      calculate.setDisable(true)
     }
 
     minus.onAction  = (e: ActionEvent) => {
       text.text = checkOperation(text) + "-"
       floatPoint.setDisable(false)
+      calculate.setDisable(true)
+      calculate.setDisable(true)
     }
 
     floatPoint.onAction  = (e: ActionEvent) => {
