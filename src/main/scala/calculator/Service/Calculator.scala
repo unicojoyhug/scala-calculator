@@ -12,22 +12,23 @@ object Calculator{
     //parse input with left / operator / right
     val format = new DecimalFormat("0.#########")
 
-    val operator = input.replaceAll("\\s", "")
+    val operator = List ('+', '-', '/', 'x').find(input.contains(_))
 
-    try {
-      if (operator.contains('+')) {
-        format.format(plus(input.split('+').map(_.toDouble)))
-      } else if (operator.contains('-')) {
-        format.format(minus(input.split('-').map(_.toDouble)))
-      } else if (operator.contains('/')) {
-        format.format(divide(input.split('/').map(_.toDouble)))
-      } else if (operator.contains('x')) {
-        format.format(multiply(input.split('x').map(_.toDouble)))
-      } else throw new ArithmeticException("Unknown operator")
-    }catch {
+    val inputList = input.replaceAll("\\s", "").split(operator.last).map(_.toDouble)
+
+    try{
+      format.format( operator match {
+        case Some('+') => plus(inputList)
+        case Some('-') => minus(inputList)
+        case Some('x') => multiply(inputList)
+        case Some('/') => divide(inputList)
+        case None => {
+          logger.debug(input)
+          throw new ArithmeticException("Unknown operator")}
+      })
+    } catch {
       case x : NumberFormatException => {"Wrong input"}
     }
-
   }
 
   def plus (inputArray: Array[Double]): Double = inputArray(0) + inputArray(1)
