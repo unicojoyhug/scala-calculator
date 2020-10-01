@@ -1,7 +1,5 @@
 package calculator.Service
 
-import java.lang.NumberFormatException
-
 import org.slf4j.LoggerFactory
 import java.text.DecimalFormat
 
@@ -18,10 +16,10 @@ object Calculator{
 
     try{
       format.format( operator match {
-        case Some('+') => plus(inputList)
-        case Some('-') => minus(inputList)
-        case Some('x') => multiply(inputList)
-        case Some('/') => divide(inputList)
+        case Some('+') => calculate((a, b)  => a + b)(inputList(0), inputList(1))
+        case Some('-') => calculate((a, b)  => a - b)(inputList(0), inputList(1))
+        case Some('x') => calculate((a, b)  => a * b)(inputList(0), inputList(1))
+        case Some('/') => calculate((a, b) => divide(a, b))(inputList(0), inputList(1))
         case None => {
           logger.debug(input)
           throw new ArithmeticException("Unknown operator")}
@@ -31,19 +29,14 @@ object Calculator{
     }
   }
 
-  def plus (inputArray: Array[Double]): Double = inputArray(0) + inputArray(1)
+  def calculate(f:(Double, Double)=> Double)(a: Double, b: Double):Double = f(a, b)
 
-  def minus (inputArray: Array[Double]): Double = inputArray(0) - inputArray(1)
-
-  def multiply (inputArray: Array[Double]):Double = inputArray(0) * inputArray(1)
-
-  def divide (inputArray: Array[Double]):Double = {
-    if(inputArray(1) == 0) {
+  def divide (inputLeft:Double, inputRight:Double):Double = {
+    if(inputRight == 0) {
       throw new ArithmeticException("Division by zero is undefined.")
     } else {
-      BigDecimal(inputArray(0) / inputArray(1)).setScale(9, BigDecimal.RoundingMode.HALF_UP).toDouble
+      BigDecimal(inputLeft / inputRight).setScale(9, BigDecimal.RoundingMode.HALF_UP).toDouble
     }
-
   }
 }
 
